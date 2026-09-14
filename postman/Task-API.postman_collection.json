@@ -1,0 +1,65 @@
+{
+  "info": {
+    "name": "Task API",
+    "_postman_id": "d4a1e6a2-1b3c-4f0a-9e2d-7c6b5a4f3e21",
+    "description": "Lab 7 — Task API backed by MongoDB via Mongoose. Endpoints for managing tasks.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseURL", "value": "http://localhost:5001/api/tasks" }
+  ],
+  "item": [
+    {
+      "name": "Get All Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{baseURL}}", "host": ["{{baseURL}}"] }
+      }
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Buy milk\"\n}"
+        },
+        "url": { "raw": "{{baseURL}}", "host": ["{{baseURL}}"] }
+      }
+    },
+    {
+      "name": "Create Task - Missing Text (400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": { "raw": "{{baseURL}}", "host": ["{{baseURL}}"] }
+      }
+    },
+    {
+      "name": "Update Task",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Buy oat milk\"\n}"
+        },
+        "url": { "raw": "{{baseURL}}/:id", "host": ["{{baseURL}}"], "path": [":id"], "variable": [{ "key": "id", "value": "REPLACE_WITH_TASK_ID" }] }
+      }
+    },
+    {
+      "name": "Delete Task",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": { "raw": "{{baseURL}}/:id", "host": ["{{baseURL}}"], "path": [":id"], "variable": [{ "key": "id", "value": "REPLACE_WITH_TASK_ID" }] }
+      }
+    }
+  ]
+}
